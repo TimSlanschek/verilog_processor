@@ -1,0 +1,138 @@
+DEPTH = 16384;
+WIDTH = 32;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+CONTENT
+BEGIN
+    0000 : 80000188; --> 0000 : addi	s1,s1,0x1
+    0001 : 80000188; --> 0004 : addi	s1,s1,0x1
+    0002 : 80000188; --> 0008 : addi	s1,s1,0x1
+    0003 : 80000188; --> 000c : addi	s1,s1,0x1
+    0004 : 80000188; --> 0010 : addi	s1,s1,0x1
+    0005 : 80000188; --> 0014 : addi	s1,s1,0x1
+    0006 : 80000188; --> 0018 : addi	s1,s1,0x1
+    0007 : 20001800; --> 001c : br	BadPC
+    0008 : 3000c00a; --> 0020 : jmp	0x300(ZERO)
+    0009 : 3000d40a; --> 0024 : jmp	0x350(ZERO)
+    000a : 3001000a; --> 0028 : jmp	0x400(ZERO)
+    [000b..0031] : dead;
+    000c : 3001140a; --> 0032 : jmp	0x450(ZERO)
+    000d : 3001400a; --> 0036 : jmp	0x500(ZERO)
+    [000e..003f] : dead;
+    0010 : 3001540a; --> 0040 : jmp	0x550(ZERO)
+    0011 : 3001800a; --> 0044 : jmp	0x600(ZERO)
+    0012 : 3001940a; --> 0048 : jmp	0x650(ZERO)
+    [0013..0051] : dead;
+    0014 : 3001c00a; --> 0052 : jmp	0x700(ZERO)
+    0015 : 3001d40a; --> 0056 : jmp	0x750(ZERO)
+    [0016..005f] : dead;
+    0018 : 3002000a; --> 0060 : jmp	0x800(ZERO)
+    0019 : 3002140a; --> 0064 : jmp	0x850(ZERO)
+    001a : 3002400a; --> 0068 : jmp	0x900(ZERO)
+    [001b..0071] : dead;
+    001c : 3002540a; --> 0072 : jmp	0x950(ZERO)
+    [001d..007f] : dead;
+    0020 : 90000005; --> 0080 : andi	zero,t0,0x0
+    0021 : 00b00500; --> 0084 : not 	t0,zero
+    0022 : 90001f55; --> 0088 : andi	t0,t0,0b0000011111
+    0023 : 68f02005; --> 008c : sw	t0,LEDR(zero)
+    0024 : 800bad05; --> 0090 : addi 	zero,t0,0xBAD
+    0025 : 68f000e5; --> 0094 : sw 	t0,HEX(sp)
+    0026 : 20fff900; --> 0098 : br	BadPC
+    [0027..00ff] : dead;
+    0040 : 8002aa05; --> 0100 : addi 	zero, t0, 0b1010101010
+    0041 : 68f02005; --> 0104 : sw	t0, LEDR(zero)
+    0042 : 80008508; --> 0108 : addi	zero,s1,0x80085
+    0043 : 68f00008; --> 010c : sw	s1,HEX(zero)
+    0044 : 20fffb00; --> 0110 : br 	Done
+    [0045..02ff] : dead;
+    00c0 : 80100005; --> 0300 : addi    zero, t0, 0x1000
+    00c1 : 68f000e5; --> 0304 : sw      t0, HEX(sp)
+    00c2 : 80000606; --> 0308 : addi	zero, t1, 0x06
+    00c3 : 48097409; --> 030c : lw	s2, LoopIter(zero)
+    00c4 : 3002590a; --> 0310 : jmp	IntLoop(ZERO)
+    [00c5..034f] : dead;
+    00d4 : 80100105; --> 0350 : addi    zero, t0, 0x1001
+    00d5 : 68f000e5; --> 0354 : sw      t0, HEX(sp)
+    00d6 : 80000606; --> 0358 : addi	zero, t1, 0x06
+    00d7 : 48097409; --> 035c : lw	s2, LoopIter(zero)
+    00d8 : 3002590a; --> 0360 : jmp	IntLoop(ZERO)
+    [00d9..03ff] : dead;
+    0100 : 80100205; --> 0400 : addi    zero, t0, 0x1002
+    0101 : 68f000e5; --> 0404 : sw      t0, HEX(sp)
+    0102 : 80000606; --> 0408 : addi	zero, t1, 0x06
+    0103 : 48097409; --> 040c : lw	s2, LoopIter(zero)
+    0104 : 3002590a; --> 0410 : jmp	IntLoop(ZERO)
+    [0105..044f] : dead;
+    0114 : 80100305; --> 0450 : addi    zero, t0, 0x1003
+    0115 : 68f000e5; --> 0454 : sw      t0, HEX(sp)
+    0116 : 80000606; --> 0458 : addi	zero, t1, 0x06
+    0117 : 48097409; --> 045c : lw	s2, LoopIter(zero)
+    0118 : 3002590a; --> 0460 : jmp	IntLoop(ZERO)
+    [0119..04ff] : dead;
+    0140 : 80100405; --> 0500 : addi    zero, t0, 0x1004
+    0141 : 68f000e5; --> 0504 : sw      t0, HEX(sp)
+    0142 : 80000606; --> 0508 : addi	zero, t1, 0x06
+    0143 : 48097409; --> 050c : lw	s2, LoopIter(zero)
+    0144 : 3002590a; --> 0510 : jmp	IntLoop(ZERO)
+    [0145..054f] : dead;
+    0154 : 80100505; --> 0550 : addi    zero, t0, 0x1005
+    0155 : 68f000e5; --> 0554 : sw      t0, HEX(sp)
+    0156 : 80000606; --> 0558 : addi	zero, t1, 0x06
+    0157 : 48097409; --> 055c : lw	s2, LoopIter(zero)
+    0158 : 3002590a; --> 0560 : jmp	IntLoop(ZERO)
+    [0159..05ff] : dead;
+    0180 : 80100605; --> 0600 : addi    zero, t0, 0x1006
+    0181 : 68f000e5; --> 0604 : sw      t0, HEX(sp)
+    0182 : 80000606; --> 0608 : addi	zero, t1, 0x06
+    0183 : 48097409; --> 060c : lw	s2, LoopIter(zero)
+    0184 : 3002590a; --> 0610 : jmp	IntLoop(ZERO)
+    [0185..064f] : dead;
+    0194 : 80100705; --> 0650 : addi    zero, t0, 0x1007
+    0195 : 68f000e5; --> 0654 : sw      t0, HEX(sp)
+    0196 : 80000606; --> 0658 : addi	zero, t1, 0x06
+    0197 : 48097409; --> 065c : lw	s2, LoopIter(zero)
+    0198 : 3002590a; --> 0660 : jmp	IntLoop(ZERO)
+    [0199..06ff] : dead;
+    01c0 : 80100805; --> 0700 : addi    zero, t0, 0x1008
+    01c1 : 68f000e5; --> 0704 : sw      t0, HEX(sp)
+    01c2 : 80000606; --> 0708 : addi	zero, t1, 0x06
+    01c3 : 48097409; --> 070c : lw	s2, LoopIter(zero)
+    01c4 : 3002590a; --> 0710 : jmp	IntLoop(ZERO)
+    [01c5..074f] : dead;
+    01d4 : 80100905; --> 0750 : addi    zero, t0, 0x1009
+    01d5 : 68f000e5; --> 0754 : sw      t0, HEX(sp)
+    01d6 : 80000606; --> 0758 : addi	zero, t1, 0x06
+    01d7 : 48097409; --> 075c : lw	s2, LoopIter(zero)
+    01d8 : 3002590a; --> 0760 : jmp	IntLoop(ZERO)
+    [01d9..07ff] : dead;
+    0200 : 80000005; --> 0800 : addi    zero, t0, 0x0000
+    0201 : 68f000e5; --> 0804 : sw      t0, HEX(sp)
+    0202 : 80000606; --> 0808 : addi	zero, t1, 0x06
+    0203 : 48097409; --> 080c : lw	s2, LoopIter(zero)
+    0204 : 3002590a; --> 0810 : jmp	IntLoop(ZERO)
+    [0205..084f] : dead;
+    0214 : 80000105; --> 0850 : addi    zero, t0, 0x0001
+    0215 : 68f000e5; --> 0854 : sw      t0, HEX(sp)
+    0216 : 80000606; --> 0858 : addi	zero, t1, 0x06
+    0217 : 48097409; --> 085c : lw	s2, LoopIter(zero)
+    0218 : 3002590a; --> 0860 : jmp	IntLoop(ZERO)
+    [0219..08ff] : dead;
+    0240 : 80000205; --> 0900 : addi    zero, t0, 0x0002
+    0241 : 68f000e5; --> 0904 : sw      t0, HEX(sp)
+    0242 : 80000606; --> 0908 : addi	zero, t1, 0x06
+    0243 : 48097409; --> 090c : lw	s2, LoopIter(zero)
+    0244 : 3002590a; --> 0910 : jmp	IntLoop(ZERO)
+    [0245..094f] : dead;
+    0254 : 80000305; --> 0950 : addi    zero, t0, 0x0003
+    0255 : 68f000e5; --> 0954 : sw      t0, HEX(sp)
+    0256 : 80000606; --> 0958 : addi	zero, t1, 0x06
+    0257 : 48097409; --> 095c : lw	s2, LoopIter(zero)
+    0258 : 3002590a; --> 0960 : jmp	IntLoop(ZERO)
+    0259 : 80ffff66; --> 0964 : subi	t1, t1, 0x1
+    025a : 68f02006; --> 0968 : sw	t1,LEDR(zero)
+    025b : 2cfffd60; --> 096c : bne     t1, zero, IntLoop
+    025c : fc040000; --> 0970 : reti
+    025d : 01000000; --> 0974 : .WORD 0x1000000
+    [025e..3fff] : dead;
+END;
